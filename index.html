@@ -8,41 +8,83 @@
     <script type="text/javascript" src="bubbletree/lib/raphael.js"></script>
     <script type="text/javascript" src="bubbletree/lib/vis4.js"></script>
     <script type="text/javascript" src="bubbletree/lib/Tween.js"></script>
+    <script type="text/javascript" src="bubbletree/lib/jquery.tooltip.min.js"></script>
     <script type="text/javascript" src="bubbletree/build1/bubbletree.js"></script>
     <script type="text/javascript" src="bubbletree/styles/cofog.js"></script>
     <link rel="stylesheet" type="text/css" href="bubbletree/build1/bubbletree.css" />
     <script type="text/javascript">
 
         $(function() {
+
             new BubbleTree({
                 data: data,
                 container: '.bubbletree',
                 bubbleType: 'icon',
                 bubbleStyles: {
                     'fb': {                                              //taxonomy
-                        'edu': {                                        //name of the node/child
+                        'tvl': {                                        //name of the node/child
                             // color: '#9900cc',                       //color of the bubble if you like to set it here
-                            icon: 'bubbletree/styles/icons/azubi.svg' //icon url
+                            icon: 'bubbletree/styles/icons/airplane.svg' //icon url
                         },
-                        'kar': {
+                        'fel': {
 
-                            icon: 'bubbletree/styles/icons/karriere.svg'
+                            icon: 'bubbletree/styles/icons/azubi.svg'
+                        },
+			'sfa': {
+
+                            icon: 'bubbletree/styles/icons/sfa.svg'
                         },
                         'fb': {
 
                             icon: 'bubbletree/styles/icons/fb.svg'
                         },
-                        'job': {
+                        'dol': {
 
-                            icon: 'bubbletree/styles/icons/job.svg'
+                            icon: 'bubbletree/styles/icons/dollar.svg'
                         },
-                        'win': {
+                        'fin': {
 
-                            icon: 'bubbletree/styles/icons/win.svg'
+                            icon: 'bubbletree/styles/icons/financial-admin.svg'
                         },
-                        're': {
+                        'ppl': {
+
+                            icon: 'bubbletree/styles/icons/team.svg'
+                        },
+			'crt': {
+
+                            icon: 'bubbletree/styles/icons/courts.svg'
+                        },
+			're': {
 
                             icon: 'bubbletree/styles/icons/re.svg'
+                        },
+			'fls': {
+
+                            icon: 'bubbletree/styles/icons/economic-aid.svg'
+                        },
+			'mon': {
+
+                            icon: 'bubbletree/styles/icons/money.svg'
+                        },
+			'dev': {
+
+                            icon: 'bubbletree/styles/icons/human-resources.svg'
+                        },
+			'ent': {
+
+                            icon: 'bubbletree/styles/icons/planning.svg'
+                        },
+			'inf': {
+
+                            icon: 'bubbletree/styles/icons/community.svg'
+                        },
+			'pig': {
+
+                            icon: 'bubbletree/styles/icons/public-debt.svg'
+                        },
+			'vid': {
+
+                            icon: 'bubbletree/styles/icons/video.svg'
                         },
                         'nore': {
 
@@ -62,37 +104,46 @@
 
     var data = { //main node
         taxonomy:'fb',
-        name: 'fb',
-        label: "XYZ",
-        amount: 100,
-        color: '#119ce2',
+        name: 'sfa',
+        label: "Total spend",
+        amount: 3874760.91,
+        color: '#82bd27',
 
         children:[ //child level 1
 
-            {taxonomy:'fb', name:'kar', label: "X",amount: 70, color: '#e74011', //child 1.1
+            {taxonomy:'fb', name:'fb', label: "Operations",amount: 515625.89, color: '#bd2680', //child 1.1
 
                 children: [ //child level 2
 
-                            {taxonomy:'fb', name:'job',label: "Y", amount: 113, color:'#02455f'}, //child 1.1.1
-                            {taxonomy:'fb', name:'win', label: "Z", amount: 19, color:'#7c3e71',  //child 1.1.2
-
-                                            children: [ //child level 3 - the following children belong to child 1.1.2
-
-                                                       {taxonomy:'fb', name:'re',label: "ABC", amount: 84, color:'#A41ED1'}, //child 1.1.2.1
-                                                       {taxonomy:'fb', name:'nore',label: "DEF", amount: 69, color:'#000'}   //child 1.1.2.2
+			    {taxonomy:'fb', name:'crt', label: "Legal fees", amount: 15840, color:'#A41ED1'},
+			    {taxonomy:'fb', name:'fls', label: "Salaries", amount: 406616, color:'#A41ED1'},
+			    {taxonomy:'fb', name:'pig', label: "Bank fees", amount: 8115.23, color:'#bd2635'},
+                            {taxonomy:'fb', name:'re',label: "Marketing", amount: 92390.07, color:'#02455f', //child 1.1.1
+			    
+					    children: [
+							{taxonomy:'fb', name:'vid', label: "Services", amount: 3311.94, color:'#063bf5'},
+			    				{taxonomy:'fb', name:'ent', label: "Gatherings", amount: 81742.72, color:'#aa3304'}, 
 
                                                        ] }]
 
             },
 
-            {taxonomy: 'fb', name: 'edu', label: "X",amount: 30, color: '#c8b26d', //child 1.2
+            {taxonomy: 'fb', name: 'fel', label: "Fellows",amount: 2075696.59, color: '#119ce2', //child 1.2
 
                 children: [ //child level 2
 
-                            {taxonomy:'fb', name:'job',label: "Y", amount: 13, color:'#02455f'}, //child 1.2.1
-                            {taxonomy:'fb', name:'win', label: "Z", amount: 30, color:'#7c3e71', //child 1.2.2
+                            {taxonomy:'fb', name:'ppl',label: "People", amount: 266906.23, color:'#02455f'}, //child 1.2.1
+                            {taxonomy:'fb', name:'fls', label: "Flash grants", amount: 75000, color:'#1134e2'}, //child 1.2.2
+			    {taxonomy:'fb', name:'fls', label: "Fellow grants", amount: 717258.16, color:'#e2c011'}, //child 1.2.3
+			    {taxonomy:'fb', name:'dev', label: "Software dev.", amount: 493755.82, color:'#e21134'}, //child 1.2.4
+			    {taxonomy:'fb', name:'re', label: "Marketing", amount: 95452.43, color:'#e2119c'}, //child 1.2.5
+			    {taxonomy:'fb', name:'tvl', label: "Travel", amount: 95704.09, color:'#9ce211'}, //child 1.2.6
+			    {taxonomy:'fb', name:'ent', label: "Events", amount: 21778.31, color:'#d0e211'}, //child 1.2.7
+			    {taxonomy:'fb', name:'win', label: "Uncategorised", amount: 72351.34, color:'#8f9b0c'}, //child 1.2.8
+			    {taxonomy:'fb', name:'inf', label: "Infrastructure", amount: 203095.89, color:'#11e2c0'}, //child 1.2.9
+			    {taxonomy:'fb', name:'crt', label: "Legal fees", amount: 32549.98, color:'#7c3e71', //child 1.2.10
 
-                                            children: [ //child level 3 - the following children belong to child 1.2.2
+                                            children: [ //child level 3 - the following children belong to child 1.2.10
 
                                                        {taxonomy:'fb', name:'re',label: "ABC", amount: 20, color:'#A41ED1'}, //child 1.2.2.1
                                                        {taxonomy:'fb', name:'nore',label: "DEF", amount: 22, color:'#000'}  //child 1.2.2.2
@@ -109,14 +160,6 @@
 
 
 </script>
-
-<div id="header">
-    <a class="title">Example by Alexander Fedossov</a>
-    <div class="subtitle">Built with <a href="http://okfn.org/">Open Knowledge Foundation's</a> <a href="https://github.com/okfn/bubbletree">Bubbletree library</a></div>
-    <br>
-    <img src="img/cc.svg" /><img src="img/by.svg" /><img src="img/nc.svg" />
-
-</div>
 <div class="bubbletree-wrapper">
     <div class="bubbletree"></div>
 </div>
